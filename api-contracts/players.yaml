@@ -53,7 +53,96 @@ paths:
           description: Authorization required
         404:
           description: Insufficient access to view the resource or the resource does not exist
-definitions:  
+  '/players/{playerId}':
+    get:
+      operationId: getPlayer
+      description: Returns Player
+      parameters:
+        - name: playerId
+          in: path
+          description: Player ID
+          required: true
+          type: string
+      responses:
+        200:
+          description: A Player
+          schema:
+            $ref: '#/definitions/player'
+        400:
+          description: Invalid input supplied
+          schema:
+            type: object
+            properties:
+              msg:
+                type: object
+                properties:
+                  error:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        text:
+                          type: string
+                        object:
+                          type: string
+        401:
+          description: Authorization required
+        404:
+          description: Insufficient access to view the resource or the resource does not exist
+    put:
+      operationId: updatePlayer
+      description: Update Player
+      parameters:
+        - name: playerId
+          in: path
+          description: Player ID
+          required: true
+          type: string
+        - name: If-Match
+          in: header
+          description: Provide an E-Tag for concurrency checking
+          type: string
+          required: true
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/playerBody'
+      responses:
+        200:
+          description: Player successfully updated
+          schema:
+            $ref: '#/definitions/player'
+        400:
+          description: Invalid input supplied
+          schema:
+            type: object
+            properties:
+              msg:
+                type: object
+                properties:
+                  error:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        text:
+                          type: string
+                        object:
+                          type: string
+        401:
+          description: Authorization required
+        404:
+          description: Insufficient access to view the resource or the resource does not exist
+        409:
+          description: The request was not processed because of a concurrency issue, most commonly the 'If-Match' header was required but not provided
+        412:
+          description: The request was not processed because a 'If-Match' request header condition was not met
+definitions:
   playerSelfLink:
     type: object
     properties:
@@ -73,13 +162,13 @@ definitions:
         $ref: '#/definitions/playerSelfLink'
   players:
     type: object
-    title: users
-    description: Representation for a collection of Users
+    title: Players
+    description: Representation for a collection of Players
     properties:
       data:
         type: object
         properties:
-          user:
+          players:
             type: array
             items:
               type: object
@@ -138,9 +227,51 @@ definitions:
                         default: "/players"
                   playerTemplate:
                     $ref: '#/definitions/playerTemplateLink'
+  player:
+    type: object
+    title: Player
+    description: Representation for a player
+    properties:
+      data:
+        type: object
+        properties:
+          player:
+            type: object
+            allOf:
+              - $ref: '#/definitions/playerAttributes'
+              - properties:
+                  _links:
+                    $ref: '#/definitions/playerLinks'
+      meta:
+        type: object
+        description: The metadata for the resource
+        allOf:
+          - $ref: '#/definitions/playerMetaData'
+          - properties:
+              player.results:
+                type: object
+                properties:
+                  items:
+                    type: number
+                  total:
+                    type: number
+              links:
+                type: object
+                properties:
+                  self:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        default: "/players"
+  playerBody:
+    type: object
+    properties:
+      user:
+        $ref: '#/definitions/playerAttributes'
   playerAttributes:
     properties:
-      id:
+      playerId:
         type: string
         format: uuid
       name:
