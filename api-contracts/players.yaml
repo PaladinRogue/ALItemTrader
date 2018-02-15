@@ -31,28 +31,11 @@ paths:
           schema:
             $ref: '#/definitions/players'
         400:
-          description: Invalid input supplied
-          schema:
-            type: object
-            properties:
-              msg:
-                type: object
-                properties:
-                  error:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        id:
-                          type: string
-                        text:
-                          type: string
-                        object:
-                          type: string
+          $ref: 'https://raw.githubusercontent.com/TomRyder/ALItemTrader/master/api-contracts/shared/errros/400.yaml'
         401:
-          description: Authorization required
+          $ref: 'https://raw.githubusercontent.com/TomRyder/ALItemTrader/master/api-contracts/shared/errros/401.yaml'
         404:
-          description: Insufficient access to view the resource or the resource does not exist
+          $ref: 'https://raw.githubusercontent.com/TomRyder/ALItemTrader/master/api-contracts/shared/errros/404.yaml'
   '/players/{playerId}':
     get:
       operationId: getPlayer
@@ -69,28 +52,11 @@ paths:
           schema:
             $ref: '#/definitions/player'
         400:
-          description: Invalid input supplied
-          schema:
-            type: object
-            properties:
-              msg:
-                type: object
-                properties:
-                  error:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        id:
-                          type: string
-                        text:
-                          type: string
-                        object:
-                          type: string
+          $ref: 'https://raw.githubusercontent.com/TomRyder/ALItemTrader/master/api-contracts/shared/errros/400.yaml'
         401:
-          description: Authorization required
+          $ref: 'https://raw.githubusercontent.com/TomRyder/ALItemTrader/master/api-contracts/shared/errros/401.yaml'
         404:
-          description: Insufficient access to view the resource or the resource does not exist
+          $ref: 'https://raw.githubusercontent.com/TomRyder/ALItemTrader/master/api-contracts/shared/errros/404.yaml'
     put:
       operationId: updatePlayer
       description: Update Player
@@ -116,45 +82,28 @@ paths:
           schema:
             $ref: '#/definitions/player'
         400:
-          description: Invalid input supplied
-          schema:
-            type: object
-            properties:
-              msg:
-                type: object
-                properties:
-                  error:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        id:
-                          type: string
-                        text:
-                          type: string
-                        object:
-                          type: string
+          $ref: 'https://raw.githubusercontent.com/TomRyder/ALItemTrader/master/api-contracts/shared/errros/400.yaml'
         401:
-          description: Authorization required
+          $ref: 'https://raw.githubusercontent.com/TomRyder/ALItemTrader/master/api-contracts/shared/errros/401.yaml'
         404:
-          description: Insufficient access to view the resource or the resource does not exist
+          $ref: 'https://raw.githubusercontent.com/TomRyder/ALItemTrader/master/api-contracts/shared/errros/404.yaml'
         409:
-          description: The request was not processed because of a concurrency issue, most commonly the 'If-Match' header was required but not provided
+          $ref: 'https://raw.githubusercontent.com/TomRyder/ALItemTrader/master/api-contracts/shared/errros/409.yaml'
         412:
-          description: The request was not processed because a 'If-Match' request header condition was not met
+          $ref: 'https://raw.githubusercontent.com/TomRyder/ALItemTrader/master/api-contracts/shared/errros/412.yaml'
 definitions:
   playerSelfLink:
     type: object
     properties:
       href:
         type: string
-        default: "/players/{playerId}"
+        default: '/players/{playerId}'
   playerTemplateLink:
     type: object
     properties:
       href:
         type: string
-        default: "/players/resourcetemplate"
+        default: '/players/resourcetemplate'
   playerLinks:
     type: object
     properties:
@@ -198,33 +147,21 @@ definitions:
                     properties:
                       href:
                         type: string
-                        default: "/players"
+                        default: '/players'
                   first:
-                    type: object
-                    properties:
-                      href:
-                        type: string
+                    $ref: 'https://raw.githubusercontent.com/TomRyder/ALItemTrader/master/api-contracts/shared/link.yaml'
                   prev:
-                    type: object
-                    properties:
-                      href:
-                        type: string
+                    $ref: 'https://raw.githubusercontent.com/TomRyder/ALItemTrader/master/api-contracts/shared/link.yaml'
                   next:
-                    type: object
-                    properties:
-                      href:
-                        type: string
+                    $ref: 'https://raw.githubusercontent.com/TomRyder/ALItemTrader/master/api-contracts/shared/link.yaml'
                   last:
-                    type: object
-                    properties:
-                      href:
-                        type: string
+                    $ref: 'https://raw.githubusercontent.com/TomRyder/ALItemTrader/master/api-contracts/shared/link.yaml'
                   createPlayer:
                     type: object
                     properties:
                       href:
                         type: string
-                        default: "/players"
+                        default: '/players'
                   playerTemplate:
                     $ref: '#/definitions/playerTemplateLink'
   player:
@@ -263,7 +200,7 @@ definitions:
                     properties:
                       href:
                         type: string
-                        default: "/players"
+                        default: '/players'
   playerBody:
     type: object
     properties:
@@ -281,13 +218,9 @@ definitions:
   playerMetaData:
     type: object
     properties:
-      player.id:
-        type: object
-        properties:
-          hidden:
-            type: boolean
-            default: true
-          disabled:
-            type: boolean
-            default: true
-  
+      player.playerId:
+        $ref: 'https://raw.githubusercontent.com/TomRyder/ALItemTrader/master/api-contracts/shared/id-attribute.yaml'
+      player.name:
+        $ref: 'https://raw.githubusercontent.com/TomRyder/ALItemTrader/master/api-contracts/shared/attribute.yaml'
+      player.dci:
+        $ref: 'https://raw.githubusercontent.com/TomRyder/ALItemTrader/master/api-contracts/shared/attribute.yaml'
