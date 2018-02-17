@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ALItemTrader.Domain
 {
@@ -9,6 +10,7 @@ namespace ALItemTrader.Domain
         public string Race { get; set; }
         public string Class { get; set; }
         public int Level { get; set; }
+        public List<Item> Items { get; set; }
         public Player Player { get; set; }
     }
 }

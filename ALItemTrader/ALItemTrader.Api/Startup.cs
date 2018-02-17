@@ -4,6 +4,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using ALItemTrader.Persistence;
+using ALItemTrader.Persistence.Repositories;
+using ALItemTrader.Persistence.Repositories.Interfaces;
 
 namespace ALItemTrader.Api
 {
@@ -20,9 +22,10 @@ namespace ALItemTrader.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            string connection = Configuration["ConnectionStrings.testDb"];
-            //string connection = @"Server=(localdb)\mssqllocaldb;Database=EFGetStarted.AspNetCore.NewDb;Trusted_Connection=True;ConnectRetryCount=0";
-            services.AddDbContext<ALItemTraderDbContext>(options => options.UseSqlServer(connection));
+
+            services.AddScoped<ICharacterRepository, CharacterRepository>();
+            
+            services.AddDbContext<ALItemTraderDbContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:TestDb"]));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
