@@ -17,7 +17,7 @@ paths:
       parameters:
         - name: page[limit]
           in: query
-          description: Limit of items to return from the collection
+          description: Limit of players to return from the collection
           type: integer
           required: false
         - name: page[offset]
@@ -31,41 +31,79 @@ paths:
           schema:
             $ref: '#/definitions/players'
         400:
-          description: Invalid input supplied
-          schema:
-            type: object
-            properties:
-              msg:
-                type: object
-                properties:
-                  error:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        id:
-                          type: string
-                        text:
-                          type: string
-                        object:
-                          type: string
+          $ref: 'https://raw.githubusercontent.com/TomRyder/ALItemTrader/master/api-contracts/shared/errros/400.yaml'
         401:
-          description: Authorization required
+          $ref: 'https://raw.githubusercontent.com/TomRyder/ALItemTrader/master/api-contracts/shared/errros/401.yaml'
         404:
-          description: Insufficient access to view the resource or the resource does not exist
-definitions:  
+          $ref: 'https://raw.githubusercontent.com/TomRyder/ALItemTrader/master/api-contracts/shared/errros/404.yaml'
+  '/players/{playerId}':
+    get:
+      operationId: getPlayer
+      description: Returns Player
+      parameters:
+        - name: playerId
+          in: path
+          description: Player ID
+          required: true
+          type: string
+      responses:
+        200:
+          description: A Player
+          schema:
+            $ref: '#/definitions/player'
+        400:
+          $ref: 'https://raw.githubusercontent.com/TomRyder/ALItemTrader/master/api-contracts/shared/errros/400.yaml'
+        401:
+          $ref: 'https://raw.githubusercontent.com/TomRyder/ALItemTrader/master/api-contracts/shared/errros/401.yaml'
+        404:
+          $ref: 'https://raw.githubusercontent.com/TomRyder/ALItemTrader/master/api-contracts/shared/errros/404.yaml'
+    put:
+      operationId: updatePlayer
+      description: Update Player
+      parameters:
+        - name: playerId
+          in: path
+          description: Player ID
+          required: true
+          type: string
+        - name: If-Match
+          in: header
+          description: Provide an E-Tag for concurrency checking
+          type: string
+          required: true
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/playerBody'
+      responses:
+        200:
+          description: Player successfully updated
+          schema:
+            $ref: '#/definitions/player'
+        400:
+          $ref: 'https://raw.githubusercontent.com/TomRyder/ALItemTrader/master/api-contracts/shared/errros/400.yaml'
+        401:
+          $ref: 'https://raw.githubusercontent.com/TomRyder/ALItemTrader/master/api-contracts/shared/errros/401.yaml'
+        404:
+          $ref: 'https://raw.githubusercontent.com/TomRyder/ALItemTrader/master/api-contracts/shared/errros/404.yaml'
+        409:
+          $ref: 'https://raw.githubusercontent.com/TomRyder/ALItemTrader/master/api-contracts/shared/errros/409.yaml'
+        412:
+          $ref: 'https://raw.githubusercontent.com/TomRyder/ALItemTrader/master/api-contracts/shared/errros/412.yaml'
+definitions:
   playerSelfLink:
     type: object
     properties:
       href:
         type: string
-        default: "/players/{playerId}"
+        default: '/players/{playerId}'
   playerTemplateLink:
     type: object
     properties:
       href:
         type: string
-        default: "/players/resourcetemplate"
+        default: '/players/resourcetemplate'
   playerLinks:
     type: object
     properties:
@@ -73,13 +111,13 @@ definitions:
         $ref: '#/definitions/playerSelfLink'
   players:
     type: object
-    title: users
-    description: Representation for a collection of Users
+    title: Players
+    description: Representation for a collection of Players
     properties:
       data:
         type: object
         properties:
-          user:
+          players:
             type: array
             items:
               type: object
@@ -109,38 +147,68 @@ definitions:
                     properties:
                       href:
                         type: string
-                        default: "/players"
+                        default: '/players'
                   first:
-                    type: object
-                    properties:
-                      href:
-                        type: string
+                    $ref: 'https://raw.githubusercontent.com/TomRyder/ALItemTrader/master/api-contracts/shared/link.yaml'
                   prev:
-                    type: object
-                    properties:
-                      href:
-                        type: string
+                    $ref: 'https://raw.githubusercontent.com/TomRyder/ALItemTrader/master/api-contracts/shared/link.yaml'
                   next:
-                    type: object
-                    properties:
-                      href:
-                        type: string
+                    $ref: 'https://raw.githubusercontent.com/TomRyder/ALItemTrader/master/api-contracts/shared/link.yaml'
                   last:
-                    type: object
-                    properties:
-                      href:
-                        type: string
+                    $ref: 'https://raw.githubusercontent.com/TomRyder/ALItemTrader/master/api-contracts/shared/link.yaml'
                   createPlayer:
                     type: object
                     properties:
                       href:
                         type: string
-                        default: "/players"
+                        default: '/players'
                   playerTemplate:
                     $ref: '#/definitions/playerTemplateLink'
+  player:
+    type: object
+    title: Player
+    description: Representation for a player
+    properties:
+      data:
+        type: object
+        properties:
+          player:
+            type: object
+            allOf:
+              - $ref: '#/definitions/playerAttributes'
+              - properties:
+                  _links:
+                    $ref: '#/definitions/playerLinks'
+      meta:
+        type: object
+        description: The metadata for the resource
+        allOf:
+          - $ref: '#/definitions/playerMetaData'
+          - properties:
+              player.results:
+                type: object
+                properties:
+                  items:
+                    type: number
+                  total:
+                    type: number
+              links:
+                type: object
+                properties:
+                  self:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        default: '/players'
+  playerBody:
+    type: object
+    properties:
+      user:
+        $ref: '#/definitions/playerAttributes'
   playerAttributes:
     properties:
-      id:
+      playerId:
         type: string
         format: uuid
       name:
@@ -150,13 +218,9 @@ definitions:
   playerMetaData:
     type: object
     properties:
-      player.id:
-        type: object
-        properties:
-          hidden:
-            type: boolean
-            default: true
-          disabled:
-            type: boolean
-            default: true
-  
+      player.playerId:
+        $ref: 'https://raw.githubusercontent.com/TomRyder/ALItemTrader/master/api-contracts/shared/id-attribute.yaml'
+      player.name:
+        $ref: 'https://raw.githubusercontent.com/TomRyder/ALItemTrader/master/api-contracts/shared/attribute.yaml'
+      player.dci:
+        $ref: 'https://raw.githubusercontent.com/TomRyder/ALItemTrader/master/api-contracts/shared/attribute.yaml'
