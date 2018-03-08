@@ -17,7 +17,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ALItemTrader.Persistence\ALItemTrader.Persistence.csproj" />
+    <ProjectReference Include="..\ALItemTrader.Application\ALItemTrader.Application.csproj" />
+    <ProjectReference Include="..\ALItemTrader.Setup\ALItemTrader.Setup.csproj" />
   </ItemGroup>
 
 </Project>
