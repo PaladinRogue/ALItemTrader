@@ -3,18 +3,18 @@ using ALItemTrader.Persistence.Repositories.Interfaces;
 
 namespace ALItemTrader.Persistence.Repositories
 {
-    public class CharacterRepository : IRepository<Character>
+    public class AdminRepository : IRepository<Admin>
     {
         private readonly ALItemTraderDbContext _context;
 
-        public CharacterRepository(ALItemTraderDbContext context)
+        public AdminRepository(ALItemTraderDbContext context)
         {
             _context = context;
         }
 
-        public void Add(Character character)
+        public void Add(Admin admin)
         {
-            _context.Characters.Add(character);
+            _context.Admins.Add(admin);
         }
     }
 }
