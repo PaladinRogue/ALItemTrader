@@ -9,9 +9,9 @@ namespace ALItemTrader.Api.Controllers
     {
         // GET api/test
         [HttpGet]
-        public IActionResult Get()
+        public TestModel Get()
         {
-            return Ok(new TestModel(Guid.NewGuid(), "SomeName", 15));
+            return new TestModel(Guid.NewGuid(), "SomeName", 15);
         }
 
         // GET api/test/5
@@ -22,9 +22,9 @@ namespace ALItemTrader.Api.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody]TestModel model)
+        public TestModel Post([FromBody]TestModel model)
         {
-            return Ok(model);
+            return model;
         }
     }
 
@@ -37,7 +37,7 @@ namespace ALItemTrader.Api.Controllers
         public TestModel(Guid id, string name, int level)
         {
             Id = id;
-            Name = null;
+            Name = name;
             Level = level;
         }
 
@@ -46,8 +46,7 @@ namespace ALItemTrader.Api.Controllers
 
         [Required]
         public string Name { get; set; }
-
-        [Required]
+        
         public int Level { get; set; }
     }
 }
