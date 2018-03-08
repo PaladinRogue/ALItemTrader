@@ -5,21 +5,21 @@ using System.Linq;
 
 namespace ALItemTrader.Api.Responses
 {
-    public class Metadata
+    public class Meta
     {
-        public Metadata(dynamic data)
+        public Meta(dynamic data)
         {
 
             //TODO reflectively get links - could do this from an attribute / named property?
 
 
-            PropertyMetadatas = new List<PropertyMetadata>();
+            PropertyMeta = new List<PropertyMeta>();
             foreach (PropertyDescriptor property in TypeDescriptor.GetProperties(data.GetType()))
             {
                 List<string> constraints = new List<string>();
                 if (property.Attributes.OfType<RequiredAttribute>().Any())
                 {
-                    constraints.Add("Required");
+                    constraints.Add("required");
                 }
 
 
@@ -28,12 +28,12 @@ namespace ALItemTrader.Api.Responses
 
                 if (constraints.Any())
                 {
-                    PropertyMetadatas.Add(new PropertyMetadata(property.Name, constraints));
+                    PropertyMeta.Add(new PropertyMeta(property.Name.ToCamelCase(), constraints));
                 }
             }
         }
 
-        public IList<PropertyMetadata> PropertyMetadatas { get; set; }
+        public IList<PropertyMeta> PropertyMeta { get; set; }
         public IEnumerable<Link> Links { get; set; }
     }
 }

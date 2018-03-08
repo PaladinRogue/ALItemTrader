@@ -2,11 +2,11 @@ using System.Collections.Generic;
 
 namespace ALItemTrader.Api.Responses
 {
-    public class PropertyMetadata
+    public class PropertyMeta
     {
-        public PropertyMetadata(string property, IEnumerable<string> constraints)
+        public PropertyMeta(string property, IEnumerable<string> constraints)
         {
-            Property = property;
+            Property = property.ToCamelCase();
             Constraints = constraints;
         }
 

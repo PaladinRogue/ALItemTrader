@@ -5,10 +5,10 @@
         public Response(dynamic data)
         {
             Data = data;
-            Meta = new Metadata(data);
+            Meta = new Meta(data);
         }
 
         public dynamic Data { get; set; }
-        public Metadata Meta { get; set; }
+        public Meta Meta { get; set; }
     }
 }

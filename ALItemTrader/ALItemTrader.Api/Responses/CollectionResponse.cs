@@ -14,10 +14,10 @@ namespace ALItemTrader.Api.Responses
                 CollectionData.Add(new Response(data));
             }
 
-            CollectionMeta = new CollectionMetadata(context);
+            CollectionMeta = new CollectionMeta(context);
         }
 
         public IList<Response> CollectionData { get; set; }
-        public CollectionMetadata CollectionMeta { get; set; }
+        public CollectionMeta CollectionMeta { get; set; }
     }
 }

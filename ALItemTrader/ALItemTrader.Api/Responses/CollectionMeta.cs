@@ -4,9 +4,9 @@ using Microsoft.AspNetCore.Mvc.Formatters;
 
 namespace ALItemTrader.Api.Responses
 {
-    public class CollectionMetadata
+    public class CollectionMeta
     {
-        public CollectionMetadata(OutputFormatterWriteContext context)
+        public CollectionMeta(OutputFormatterWriteContext context)
         {
             if (context.Object is IEnumerable<dynamic> objects)
             {
