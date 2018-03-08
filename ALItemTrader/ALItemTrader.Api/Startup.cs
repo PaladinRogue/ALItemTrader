@@ -4,9 +4,9 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace ALItemTrader.Api
 {
@@ -24,11 +24,7 @@ namespace ALItemTrader.Api
         {
             services.AddMvc(options =>
             {
-                // Remove any json output formatter 
-                options.OutputFormatters.RemoveType<JsonOutputFormatter>();
-
-                // Add custom json output formatter 
-                options.OutputFormatters.Add(new CustomJsonOutputFormatter(new JsonSerializerSettings(), System.Buffers.ArrayPool<char>.Shared));
+                UseCustomJsonOutputFormatter(options);
             });
 
             ServiceRegistration.RegisterServices(Configuration, services);
@@ -43,6 +39,19 @@ namespace ALItemTrader.Api
             }
 
             app.UseMvc();
+        }
+
+        public static void UseCustomJsonOutputFormatter(Microsoft.AspNetCore.Mvc.MvcOptions options)
+        {
+            // Remove any json output formatter 
+            options.OutputFormatters.RemoveType<JsonOutputFormatter>();
+
+            // Add custom json output formatter 
+            JsonSerializerSettings jsonSerializerSettings = new JsonSerializerSettings
+            {
+                ContractResolver = new CamelCasePropertyNamesContractResolver()
+            };
+            options.OutputFormatters.Add(new CustomJsonOutputFormatter(jsonSerializerSettings, System.Buffers.ArrayPool<char>.Shared));
         }
     }
 }
