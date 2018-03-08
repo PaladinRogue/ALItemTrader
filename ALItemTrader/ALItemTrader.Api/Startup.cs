@@ -2,6 +2,7 @@
 using ALItemTrader.Setup;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Mvc.Formatters;
@@ -41,7 +42,7 @@ namespace ALItemTrader.Api
             app.UseMvc();
         }
 
-        public static void UseCustomJsonOutputFormatter(Microsoft.AspNetCore.Mvc.MvcOptions options)
+        public static void UseCustomJsonOutputFormatter(MvcOptions options)
         {
             // Remove any json output formatter 
             options.OutputFormatters.RemoveType<JsonOutputFormatter>();
