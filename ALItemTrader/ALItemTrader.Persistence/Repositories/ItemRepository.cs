@@ -3,7 +3,7 @@ using ALItemTrader.Persistence.Repositories.Interfaces;
 
 namespace ALItemTrader.Persistence.Repositories
 {
-    public class ItemRepository : IItemRepository
+    public class ItemRepository : IRepository<Item>
     {
         private readonly ALItemTraderDbContext _context;
 

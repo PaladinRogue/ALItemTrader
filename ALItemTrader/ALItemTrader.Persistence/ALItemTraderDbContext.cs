@@ -1,13 +1,16 @@
 ﻿using ALItemTrader.Domain;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace ALItemTrader.Persistence
 {
-    public class ALItemTraderDbContext : DbContext
+    public class ALItemTraderDbContext : IdentityDbContext
     {
-        public ALItemTraderDbContext(DbContextOptions<ALItemTraderDbContext> options) : base(options)
+        public ALItemTraderDbContext(DbContextOptions options) : base(options)
         {
         }
+
+        public DbSet<Admin> Admins { get; set; }
 
         public DbSet<Player> Players { get; set; }
 

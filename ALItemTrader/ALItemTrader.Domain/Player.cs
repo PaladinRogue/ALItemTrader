@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using ALItemTrader.Domain.Base;
+using ALItemTrader.Domain.Identifiers;
 
 namespace ALItemTrader.Domain
 {
-    public class Player
+    public class Player : User
     {
-        public Guid Id { get; set; }
-        public string Name { get; set; }
+        public PlayerId Id { get; set; }
         public string DCI { get; set; }
         public List<Character> Characters { get; set; }
     }

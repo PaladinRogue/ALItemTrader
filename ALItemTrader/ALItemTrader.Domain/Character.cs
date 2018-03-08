@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using ALItemTrader.Domain.Identifiers;
 
 namespace ALItemTrader.Domain
 {
     public class Character
     {
-        public Guid Id { get; set; }
+        public CharacterId Id { get; set; }
         public string Name { get; set; }
         public string Race { get; set; }
         public string Class { get; set; }

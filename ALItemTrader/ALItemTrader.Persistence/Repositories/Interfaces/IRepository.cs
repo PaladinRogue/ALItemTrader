@@ -2,8 +2,8 @@
 
 namespace ALItemTrader.Persistence.Repositories.Interfaces
 {
-    public interface ICharacterRepository
+    public interface IRepository<T>
     {
-        void Add(Character character);
+        void Add(T player);
     }
 }
