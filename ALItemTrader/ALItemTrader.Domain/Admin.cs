@@ -1,10 +1,10 @@
-﻿using ALItemTrader.Domain.Base;
-using ALItemTrader.Domain.Identifiers;
+﻿using System;
+using ALItemTrader.Domain.Base;
 
 namespace ALItemTrader.Domain
 {
     public class Admin : User
     {
-        public AdminId Id { get; set; }
+        public Guid Id { get; set; }
     }
 }
