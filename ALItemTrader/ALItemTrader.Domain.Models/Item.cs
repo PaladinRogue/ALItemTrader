@@ -1,7 +1,7 @@
 ﻿
 using System;
 
-namespace ALItemTrader.Domain
+namespace ALItemTrader.Domain.Models
 {
     public class Item
     {

@@ -3,8 +3,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using ALItemTrader.Persistence;
 using ALItemTrader.Persistence.Repositories;
-using ALItemTrader.Persistence.Repositories.Interfaces;
-using ALItemTrader.Domain;
+using ALItemTrader.Domain.Interfaces;
+using ALItemTrader.Domain.Models;
 
 namespace ALItemTrader.Setup
 {
