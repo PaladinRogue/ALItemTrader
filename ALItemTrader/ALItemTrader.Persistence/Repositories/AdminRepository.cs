@@ -1,5 +1,6 @@
-﻿using ALItemTrader.Domain;
-using ALItemTrader.Persistence.Repositories.Interfaces;
+﻿using System;
+using ALItemTrader.Domain.Interfaces;
+using ALItemTrader.Domain.Models;
 
 namespace ALItemTrader.Persistence.Repositories
 {
@@ -12,9 +13,24 @@ namespace ALItemTrader.Persistence.Repositories
             _context = context;
         }
 
+        public Admin GetById(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Add(Admin admin)
         {
             _context.Admins.Add(admin);
+        }
+
+        public void Update(Admin obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(Guid id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

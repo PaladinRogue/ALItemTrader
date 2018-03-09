@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace ALItemTrader.Domain.Base
+namespace ALItemTrader.Domain.Models.Base
 {
     public class User
     {

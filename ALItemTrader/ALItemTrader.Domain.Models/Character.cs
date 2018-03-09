@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ALItemTrader.Domain
+namespace ALItemTrader.Domain.Models
 {
     public class Character
     {

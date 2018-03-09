@@ -10,6 +10,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ALItemTrader.Application\ALItemTrader.Application.csproj" />
+    <ProjectReference Include="..\ALItemTrader.Domain.Models\ALItemTrader.Domain.Models.csproj" />
     <ProjectReference Include="..\ALItemTrader.Domain\ALItemTrader.Domain.csproj" />
   </ItemGroup>
 
