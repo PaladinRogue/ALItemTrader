@@ -1,7 +1,7 @@
 ﻿using System;
-using ALItemTrader.Domain;
-using ALItemTrader.Domain.Interfaces;
+using System.Collections.Generic;
 using ALItemTrader.Domain.Models;
+using ALItemTrader.Persistence.Interfaces;
 
 namespace ALItemTrader.Persistence.Repositories
 {
@@ -12,6 +12,11 @@ namespace ALItemTrader.Persistence.Repositories
         public CharacterRepository(ALItemTraderDbContext context)
         {
             _context = context;
+        }
+
+        public IList<Character> Get()
+        {
+            throw new NotImplementedException();
         }
 
         public Character GetById(Guid id)

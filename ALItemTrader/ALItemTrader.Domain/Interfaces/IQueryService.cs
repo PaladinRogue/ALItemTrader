@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ALItemTrader.Domain.Interfaces
 {
-    internal interface IQueryService<out T>
+    public interface IQueryService<T>
     {
+        IList<T> GetAll();
         T Get(Guid id);
     }
 }

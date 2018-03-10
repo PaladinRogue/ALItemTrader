@@ -1,5 +1,7 @@
-﻿using ALItemTrader.Api.Formatters;
+﻿using System.Reflection;
+using ALItemTrader.Api.Formatters;
 using ALItemTrader.Setup;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -8,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using MappingRegistration = ALItemTrader.Api.Mappings.MappingRegistration;
 
 namespace ALItemTrader.Api
 {
@@ -24,6 +27,7 @@ namespace ALItemTrader.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc(UseCustomJsonOutputFormatter);
+            services.AddAutoMapper(MappingRegistration.RegisterMappers);
 
             ServiceRegistration.RegisterServices(Configuration, services);
         }

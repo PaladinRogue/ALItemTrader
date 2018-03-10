@@ -1,6 +1,7 @@
 ﻿using System;
-using ALItemTrader.Domain.Interfaces;
+using System.Collections.Generic;
 using ALItemTrader.Domain.Models;
+using ALItemTrader.Persistence.Interfaces;
 
 namespace ALItemTrader.Persistence.Repositories
 {
@@ -13,9 +14,33 @@ namespace ALItemTrader.Persistence.Repositories
             _context = context;
         }
 
+        public IList<Admin> Get()
+        {
+            return new List<Admin>
+            {
+                new Admin
+                {
+                    Id = Guid.Empty,
+                    FirstName = "Tom",
+                    LastName = "Ryder"
+                },
+                new Admin
+                {
+                    Id = Guid.Empty,
+                    FirstName = "Dan",
+                    LastName = "Cheney"
+                }
+            };
+        }
+
         public Admin GetById(Guid id)
         {
-            throw new NotImplementedException();
+            return new Admin
+            {
+                Id = Guid.Empty,
+                FirstName = "Dan",
+                LastName = "Cheney"
+            };
         }
 
         public void Add(Admin admin)

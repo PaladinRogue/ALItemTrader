@@ -1,5 +1,6 @@
 ﻿using System;
-using ALItemTrader.Domain.Interfaces;
+using System.Collections.Generic;
+using ALItemTrader.Persistence.Interfaces;
 using Microsoft.AspNetCore.Identity;
 
 namespace ALItemTrader.Persistence.Repositories
@@ -11,6 +12,11 @@ namespace ALItemTrader.Persistence.Repositories
         public IdentityUserRepository(ALItemTraderDbContext context)
         {
             _context = context;
+        }
+
+        public IList<IdentityUser> Get()
+        {
+            throw new NotImplementedException();
         }
 
         public IdentityUser GetById(Guid id)

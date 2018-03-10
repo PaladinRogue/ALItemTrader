@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace ALItemTrader.Domain.AdminServices.Models
+namespace ALItemTrader.Application.Admin.Models
 {
-    public class AdminProjection
+    public class AdminAdto
     {
         public Guid Id { get; set; }
         public string FirstName { get; set; }
