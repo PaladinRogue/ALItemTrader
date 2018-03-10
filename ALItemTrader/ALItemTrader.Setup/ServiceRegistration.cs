@@ -5,6 +5,7 @@ using ALItemTrader.Persistence;
 using ALItemTrader.Persistence.Repositories;
 using ALItemTrader.Domain.Interfaces;
 using ALItemTrader.Domain.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace ALItemTrader.Setup
 {
@@ -16,6 +17,7 @@ namespace ALItemTrader.Setup
             services.AddScoped<IRepository<Player>, PlayerRepository>();
             services.AddScoped<IRepository<Character>, CharacterRepository>();
             services.AddScoped<IRepository<Item>, ItemRepository>();
+            services.AddScoped<IRepository<IdentityUser>, IdentityUserRepository>();
                         
             services.AddDbContext<ALItemTraderDbContext>(options => options.UseSqlServer(configuration["ConnectionStrings:TestDb"]));
         }
