@@ -9,6 +9,7 @@ namespace ALItemTrader.Domain.AdminServices.Mappings
         public AdminDomainMappingProfile()
         {
             CreateMap<Admin, AdminProjection>();
+            CreateMap<AdminDdto, Admin>();
         }
     }
 }

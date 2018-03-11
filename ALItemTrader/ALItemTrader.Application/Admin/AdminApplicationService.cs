@@ -30,6 +30,15 @@ namespace ALItemTrader.Application.Admin
         {
             return _mapper.Map<AdminProjection, AdminAdto> (_adminQueryService.Get(id));
         }
+
+        public AdminAdto Create(CreateAdminAdto admin)
+        {
+            var newAdmin = _mapper.Map<CreateAdminAdto, AdminDdto>(admin);
+
+            var result = _adminCommandService.Create(newAdmin);
+
+            return _mapper.Map<AdminDdto, AdminAdto>(newAdmin);
+        }
     }
 }
 

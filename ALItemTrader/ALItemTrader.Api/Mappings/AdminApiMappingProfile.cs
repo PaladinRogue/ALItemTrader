@@ -1,4 +1,5 @@
-﻿using ALItemTrader.Api.Resources.Admin;
+﻿using ALItemTrader.Api.Request.Admin;
+using ALItemTrader.Api.Resources.Admin;
 using ALItemTrader.Application.Admin.Models;
 using AutoMapper;
 
@@ -9,6 +10,7 @@ namespace ALItemTrader.Api.Mappings
         public AdminApiMappingProfile()
         {
             CreateMap<AdminAdto, AdminResource>();
+            CreateMap<AdminRequestDto, CreateAdminAdto>();
         }
     }
 }

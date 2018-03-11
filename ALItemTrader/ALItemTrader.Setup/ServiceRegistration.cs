@@ -2,7 +2,6 @@
 using ALItemTrader.Application.Admin.Interfaces;
 using ALItemTrader.Domain.AdminServices;
 using ALItemTrader.Domain.AdminServices.Interfaces;
-using ALItemTrader.Domain.Interfaces;
 using ALItemTrader.Domain.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -30,7 +29,7 @@ namespace ALItemTrader.Setup
             services.AddScoped<IRepository<IdentityUser>, IdentityUserRepository>();
 
 
-            services.AddDbContext<ALItemTraderDbContext>(options => options.UseSqlServer(configuration["ConnectionStrings:TestDb"]));
+            services.AddDbContext<ALItemTraderDbContext>(options => options.UseSqlServer(configuration["ConnectionStrings:CheneyDb"]));
         }
     }
 }
