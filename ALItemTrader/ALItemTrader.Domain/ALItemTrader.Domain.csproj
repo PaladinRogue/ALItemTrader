@@ -5,11 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="6.2.2" />
+    <PackageReference Include="log4net" Version="2.0.8" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="2.0.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\ALItemTrader.Domain.Models\ALItemTrader.Domain.Models.csproj" />
+    <ProjectReference Include="..\ALItemTrader.Persistence\ALItemTrader.Persistence.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,6 +1,7 @@
 ﻿using System;
 using ALItemTrader.Domain.Interfaces;
 using ALItemTrader.Domain.Models;
+using ALItemTrader.Persistence.Interfaces;
 
 namespace ALItemTrader.Application
 {

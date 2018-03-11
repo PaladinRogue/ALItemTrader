@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 
-namespace ALItemTrader.Domain.Interfaces
+namespace ALItemTrader.Persistence.Interfaces
 {
     public interface IRepository<T>
     {
+        IList<T> Get();
         T GetById(Guid id);
         void Add(T obj);
         void Update(T obj);

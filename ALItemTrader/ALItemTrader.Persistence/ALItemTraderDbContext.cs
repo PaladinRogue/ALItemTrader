@@ -1,5 +1,4 @@
-﻿using ALItemTrader.Domain;
-using ALItemTrader.Domain.Models;
+﻿using ALItemTrader.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 

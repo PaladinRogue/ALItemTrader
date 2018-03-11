@@ -295,3 +295,4 @@ __pycache__/
 # Publish Profiles
 *.pubxml
 
+*.gitconfig
