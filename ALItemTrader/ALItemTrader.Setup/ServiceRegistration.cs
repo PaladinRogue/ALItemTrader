@@ -29,7 +29,7 @@ namespace ALItemTrader.Setup
             services.AddScoped<IRepository<IdentityUser>, IdentityUserRepository>();
 
 
-            services.AddDbContext<ALItemTraderDbContext>(options => options.UseSqlServer(configuration["ConnectionStrings:CheneyDb"]));
+            services.AddDbContext<ALItemTraderDbContext>(options => options.UseSqlServer(configuration["ConnectionStrings:TestDb"]));
         }
     }
 }
