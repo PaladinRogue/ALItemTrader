@@ -1,5 +1,4 @@
-﻿using System.Reflection;
-using ALItemTrader.Api.Formatters;
+﻿using ALItemTrader.Api.Formatters;
 using ALItemTrader.Setup;
 using AutoMapper;
 using Microsoft.AspNetCore.Builder;
@@ -48,6 +47,8 @@ namespace ALItemTrader.Api
 
             var options = new RewriteOptions()
                 .AddRedirectToHttps();
+
+            MiddlewareRegistration.RegisterTransactionPerRequest(app);
 
             app.UseRewriter(options);
 
