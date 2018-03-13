@@ -5,7 +5,7 @@ namespace ALItemTrader.Domain.Interfaces
 {
     public interface IQueryService<T>
     {
-        IList<T> GetAll();
         T Get(Guid id);
+        IList<T> GetAll();
     }
 }

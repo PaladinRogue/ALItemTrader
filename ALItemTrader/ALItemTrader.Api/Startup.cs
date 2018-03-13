@@ -1,6 +1,7 @@
 ﻿using ALItemTrader.Api.Formatters;
 using ALItemTrader.Setup;
 using AutoMapper;
+using Common.Api.Filters;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -27,7 +28,6 @@ namespace ALItemTrader.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc(UseCustomJsonOutputFormatter);
-            services.AddAutoMapper(MappingRegistration.RegisterMappers);
 
             services.Configure<MvcOptions>(options =>
             {
@@ -35,6 +35,9 @@ namespace ALItemTrader.Api
             });
 
             ServiceRegistration.RegisterServices(Configuration, services);
+            ServiceRegistration.RegisterProviders(Configuration, services);
+
+            services.AddAutoMapper(MappingRegistration.RegisterMappers);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

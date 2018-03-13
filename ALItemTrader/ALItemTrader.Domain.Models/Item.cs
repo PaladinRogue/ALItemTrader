@@ -1,9 +1,9 @@
-﻿
-using System;
+﻿using System;
+using Common.Domain.Models;
 
 namespace ALItemTrader.Domain.Models
 {
-    public class Item
+    public class Item : Entity
     {
         public Guid Id { get; set; }
         public string Name { get; set; }

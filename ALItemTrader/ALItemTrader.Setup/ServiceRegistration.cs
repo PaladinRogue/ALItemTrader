@@ -9,6 +9,8 @@ using Microsoft.EntityFrameworkCore;
 using ALItemTrader.Persistence;
 using ALItemTrader.Persistence.Interfaces;
 using ALItemTrader.Persistence.Repositories;
+using Common.Domain.Providers;
+using Common.Domain.Providers.Interfaces;
 using Microsoft.AspNetCore.Identity;
 
 namespace ALItemTrader.Setup
@@ -28,8 +30,12 @@ namespace ALItemTrader.Setup
             services.AddScoped<IRepository<Item>, ItemRepository>();
             services.AddScoped<IRepository<IdentityUser>, IdentityUserRepository>();
 
-
             services.AddDbContext<ALItemTraderDbContext>(options => options.UseSqlServer(configuration["ConnectionStrings:CheneyDb"]));
+        }
+
+        public static void RegisterProviders(IConfiguration configuration, IServiceCollection services)
+        {
+            services.AddSingleton<IConcurrencyTokenProvider, ConcurrencyTokenProvider>();
         }
     }
 }

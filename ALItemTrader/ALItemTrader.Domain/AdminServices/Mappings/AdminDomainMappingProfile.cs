@@ -1,6 +1,8 @@
 ﻿using ALItemTrader.Domain.AdminServices.Models;
 using ALItemTrader.Domain.Models;
 using AutoMapper;
+using Common.Domain.Interfaces;
+using Common.Domain.Models.Interfaces;
 
 namespace ALItemTrader.Domain.AdminServices.Mappings
 {
@@ -8,7 +10,8 @@ namespace ALItemTrader.Domain.AdminServices.Mappings
     {
         public AdminDomainMappingProfile()
         {
-            CreateMap<Admin, AdminProjection>();
+            CreateMap<Admin, AdminProjection>()
+                .IncludeBase<IEntity, IVersionedProjection>();
             CreateMap<AdminDdto, Admin>();
         }
     }

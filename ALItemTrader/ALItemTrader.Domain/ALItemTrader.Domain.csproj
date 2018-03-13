@@ -13,6 +13,8 @@
   <ItemGroup>
     <ProjectReference Include="..\ALItemTrader.Domain.Models\ALItemTrader.Domain.Models.csproj" />
     <ProjectReference Include="..\ALItemTrader.Persistence\ALItemTrader.Persistence.csproj" />
+    <ProjectReference Include="..\Common.Persistence\Common.Domain.Models.csproj" />
+    <ProjectReference Include="..\Common\Common.Domain.csproj" />
   </ItemGroup>
 
 </Project>

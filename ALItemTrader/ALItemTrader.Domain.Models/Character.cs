@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using Common.Domain.Models;
 
 namespace ALItemTrader.Domain.Models
 {
-    public class Character
+    public class Character : Entity
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
