@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Common.Persistence\Common.Domain.Models.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\..\..\..\Users\cheneyd\.nuget\packages\automapper\6.2.2\lib\netstandard1.3\AutoMapper.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

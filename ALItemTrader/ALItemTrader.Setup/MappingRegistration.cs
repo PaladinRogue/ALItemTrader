@@ -1,6 +1,7 @@
 ﻿using ALItemTrader.Application.Admin.Mappings;
 using ALItemTrader.Domain.AdminServices.Mappings;
 using AutoMapper;
+using Common.Domain.Mappings;
 
 namespace ALItemTrader.Setup
 {
@@ -20,6 +21,8 @@ namespace ALItemTrader.Setup
 
         public static void RegisterDomainMappers(IMapperConfigurationExpression configuration)
         {
+            configuration.AddProfile<DomainMappingProfile>();
+
             configuration.AddProfile<AdminDomainMappingProfile>();
         }
     }

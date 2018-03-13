@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using ALItemTrader.Domain.AdminServices.Models;
+﻿using ALItemTrader.Domain.AdminServices.Models;
 using ALItemTrader.Domain.Interfaces;
 
 namespace ALItemTrader.Domain.AdminServices.Interfaces

@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ALItemTrader.Domain\ALItemTrader.Domain.csproj" />
+    <ProjectReference Include="..\Common.Application\Common.Application.csproj" />
   </ItemGroup>
 
 </Project>

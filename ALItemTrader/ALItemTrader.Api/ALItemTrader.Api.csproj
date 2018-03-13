@@ -31,7 +31,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ALItemTrader.Application\ALItemTrader.Application.csproj" />
     <ProjectReference Include="..\ALItemTrader.Setup\ALItemTrader.Setup.csproj" />
+    <ProjectReference Include="..\Common.Api\Common.Api.csproj" />
+    <ProjectReference Include="..\Common.Application\Common.Application.csproj" />
   </ItemGroup>
 
 </Project>
