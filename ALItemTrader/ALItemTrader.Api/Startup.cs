@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Mvc.Formatters;
+using Microsoft.AspNetCore.Rewrite;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using MappingRegistration = ALItemTrader.Api.Mappings.MappingRegistration;
@@ -29,6 +30,11 @@ namespace ALItemTrader.Api
             services.AddMvc(UseCustomJsonOutputFormatter);
             services.AddAutoMapper(MappingRegistration.RegisterMappers);
 
+            services.Configure<MvcOptions>(options =>
+            {
+                options.Filters.Add(new RequireHttpsAttribute());
+            });
+
             ServiceRegistration.RegisterServices(Configuration, services);
         }
 
@@ -39,6 +45,11 @@ namespace ALItemTrader.Api
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            var options = new RewriteOptions()
+                .AddRedirectToHttps();
+
+            app.UseRewriter(options);
 
             app.UseMvc();
         }

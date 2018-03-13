@@ -2,7 +2,6 @@
 using ALItemTrader.Application.Admin.Interfaces;
 using ALItemTrader.Domain.AdminServices;
 using ALItemTrader.Domain.AdminServices.Interfaces;
-using ALItemTrader.Domain.Interfaces;
 using ALItemTrader.Domain.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

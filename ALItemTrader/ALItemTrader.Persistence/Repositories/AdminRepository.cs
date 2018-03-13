@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using ALItemTrader.Domain.Models;
 using ALItemTrader.Persistence.Interfaces;
 
@@ -16,36 +17,19 @@ namespace ALItemTrader.Persistence.Repositories
 
         public IList<Admin> Get()
         {
-            return new List<Admin>
-            {
-                new Admin
-                {
-                    Id = Guid.Empty,
-                    FirstName = "Tom",
-                    LastName = "Ryder"
-                },
-                new Admin
-                {
-                    Id = Guid.Empty,
-                    FirstName = "Dan",
-                    LastName = "Cheney"
-                }
-            };
+            return _context.Admins.ToList();
         }
 
         public Admin GetById(Guid id)
         {
-            return new Admin
-            {
-                Id = Guid.Empty,
-                FirstName = "Dan",
-                LastName = "Cheney"
-            };
+            return _context.Admins.FirstOrDefault(a => a.Id == id);
         }
 
         public void Add(Admin admin)
         {
             _context.Admins.Add(admin);
+
+            _context.SaveChanges();
         }
 
         public void Update(Admin obj)

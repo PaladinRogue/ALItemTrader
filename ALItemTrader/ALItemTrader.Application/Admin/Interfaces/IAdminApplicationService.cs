@@ -9,5 +9,6 @@ namespace ALItemTrader.Application.Admin.Interfaces
     {
         IList<AdminAdto> GetAdmins();
         AdminAdto GetAdminById(Guid id);
+        AdminAdto Create(CreateAdminAdto admin);
     }
 }

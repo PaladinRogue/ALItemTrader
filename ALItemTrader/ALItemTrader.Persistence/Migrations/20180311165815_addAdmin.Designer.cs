@@ -11,9 +11,10 @@ using System;
 namespace ALItemTrader.Persistence.Migrations
 {
     [DbContext(typeof(ALItemTraderDbContext))]
-    partial class ALItemTraderDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180311165815_addAdmin")]
+    partial class addAdmin
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using ALItemTrader.Api.Request.Admin;
 using ALItemTrader.Api.Resources.Admin;
 using ALItemTrader.Application.Admin.Interfaces;
 using ALItemTrader.Application.Admin.Models;
@@ -32,7 +33,15 @@ namespace ALItemTrader.Api.Controllers
         public IActionResult Get(Guid id)
         {
             return new ObjectResult(
-                _mapper.Map<AdminAdto, AdminResource>(_adminApplicationService.GetAdminById(Guid.Empty))
+                _mapper.Map<AdminAdto, AdminResource>(_adminApplicationService.GetAdminById(id))
+            ); 
+        }
+
+        [HttpPost]
+        public IActionResult Post([FromBody]AdminRequestDto request)
+        {
+            return new ObjectResult(
+                _mapper.Map<AdminAdto, AdminResource>(_adminApplicationService.Create(_mapper.Map<AdminRequestDto, CreateAdminAdto>(request)))
             ); 
         }
     }
